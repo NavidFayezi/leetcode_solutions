@@ -1,45 +1,27 @@
-"""Utilities for computing the product of array elements except self.
-
-This module provides a Solution class with a method to compute the product
-of all elements of a list except the element at each index, without using
-division and in O(n) time with O(n) additional space.
-
-Example:
-    >>> Solution().productExceptSelf([1, 2, 3, 4])
-    [24, 12, 8, 6]
-
-The implementation constructs prefix (left) and suffix (right) product
-lists and multiplies corresponding entries to produce the result.
-"""
-
-
 class Solution:
-    """Encapsulates solutions to LeetCode algorithmic problems.
+    """Container for LeetCode problem solutions.
 
-    Provides methods to compute results for various problems efficiently.
+    This class groups small solution methods for common LeetCode problems.
+    Methods are implemented for clarity and educational purposes rather than
+    as production-grade library APIs.
     """
 
     def productExceptSelf(self, nums: list[int]) -> list[int]:
-        """Return a list where each element is the product of all other elements.
+        """Return element-wise products of the input list excluding the element at each index.
 
-        Computes, for each index i in ``nums``, the product of all elements of
-        ``nums`` except ``nums[i]``. Division is not used. The algorithm runs
-        in O(n) time and uses O(n) extra space for the prefix and suffix
-        product lists.
+        For each index i, compute the product of all elements of ``nums``
+        except ``nums[i]``. The implementation avoids division by computing
+        prefix and suffix products.
 
         Args:
-            nums: A list of integers. It may contain zeros. The function does
-                not modify the input list.
+            nums (list[int]): Input list of integers. May contain zeros.
 
         Returns:
-            A list of integers of the same length as ``nums`` where the value
-            at index i is the product of all elements in ``nums`` except
-            ``nums[i]``.
+            list[int]: A list where the value at index ``i`` is the product of
+                all elements in ``nums`` except ``nums[i]``.
 
         Raises:
-            ValueError: If ``nums`` is empty. (This behavior mirrors typical
-                LeetCode constraints where an empty input is not expected but
-                is explicitly rejected here for clarity.)
+            ValueError: If ``nums`` is empty.
 
         Examples:
             >>> Solution().productExceptSelf([1, 2, 3, 4])
