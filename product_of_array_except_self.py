@@ -1,11 +1,4 @@
 class Solution:
-    """Container for LeetCode problem solutions.
-
-    This class groups small solution methods for common LeetCode problems.
-    Methods are implemented for clarity and educational purposes rather than
-    as production-grade library APIs.
-    """
-
     def productExceptSelf(self, nums: list[int]) -> list[int]:
         """Return element-wise products of the input list excluding the element at each index.
 
