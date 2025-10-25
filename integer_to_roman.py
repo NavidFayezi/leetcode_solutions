@@ -1,4 +1,20 @@
 class Solution:
+    """Convert integers to Roman numerals.
+
+    This class provides a solution for converting a positive integer
+    (1..3999) into its Roman numeral representation. It uses two
+    lookup tables: `mapping` for the standard numerals and
+    `subtractive_mapping` for subtractive pairs (like IV, IX).
+
+    Methods
+    -------
+    intToRoman(num: int) -> str
+        Convert `num` to its Roman numeral string.
+
+    helper(num: int) -> str
+        Internal recursive helper that converts a single decimal place
+        (e.g. 900, 40, 3) into Roman numerals.
+    """
     mapping = [
         ("M", 1000),
         ("D", 500),
@@ -18,6 +34,24 @@ class Solution:
     ]
 
     def intToRoman(self, num: int) -> str:
+        """Convert an integer to a Roman numeral.
+
+        Parameters
+        ----------
+        num : int
+            The integer to convert. Must satisfy 1 <= num < 4000.
+
+        Returns
+        -------
+        str
+            The Roman numeral representation of `num`.
+
+        Raises
+        ------
+        AssertionError
+            If `num` is not in the valid range (1..3999).
+        """
+
         assert num > 0
         assert num < 4000
 
@@ -39,6 +73,24 @@ class Solution:
         return roman_numeral
 
     def helper(self, num: int) -> str:
+        """Recursive helper that converts a number place to Roman.
+
+        The function expects `num` to be a single decimal place value
+        (for example 900, 40, 3). It returns the Roman numeral fragment
+        corresponding to that value. If `num` is 0 it returns an empty
+        string.
+
+        Parameters
+        ----------
+        num : int
+            Decimal-place integer to convert (>= 0).
+
+        Returns
+        -------
+        str
+            Roman numeral fragment for `num`.
+        """
+
         if num == 0:
             return ""
 
@@ -58,6 +110,6 @@ class Solution:
 
 
 if __name__ == "__main__":
-    test_input = 10
+    test_input = 3749
     solution = Solution()
     print(solution.intToRoman(test_input))  # output MMMDCCXLIX
