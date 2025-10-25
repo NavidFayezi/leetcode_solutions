@@ -6,6 +6,7 @@ class Solution:
         assert(num > 0)
         assert(num < 4000)
         
+        # First, break the number into its decimal places
         divider = 10
         decimal_places = []
         multiplier = 1
@@ -14,6 +15,8 @@ class Solution:
             multiplier *= 10
             num = num // 10
         
+        # Then, convert each decimal place to roman numeral, using the helper
+        # function, and concatenate the results
         roman_numeral = ""
         for i in decimal_places:
             roman_numeral = self.helper(i) + roman_numeral
@@ -31,9 +34,7 @@ class Solution:
         num_letter = len(self.mapping)
         current_letter = -1 
         for i in range(num_letter):
-            if num == self.mapping[i][1]:
-                return self.mapping[i][0]
-            if self.mapping[i][1] < num:
+            if self.mapping[i][1] <= num:
                 current_letter = self.mapping[i]
                 break
         
