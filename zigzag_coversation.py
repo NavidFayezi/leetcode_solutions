@@ -1,5 +1,19 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        """Convert `s` into its ZigZag form and return the resulting string.
+
+        Args:
+            s (str): The input string to convert.
+            numRows (int): Number of rows to use for the ZigZag pattern.
+
+        Returns:
+            str: The converted string read row-by-row from the ZigZag pattern.
+
+        Notes:
+            This implementation builds a list of columns (each column is a
+            list of length `numRows`) that form a transposed view of the
+            ZigZag, then delegates to `zigzag_matrix_to_str` to flatten it.
+        """
         zigzag_matrix = []  # transpose of the answer matrix
         index = 0
         str_length = len(s)
@@ -60,6 +74,18 @@ class Solution:
     
 
     def zigzag_matrix_to_str(self, zigzag: list, numrows: int) -> str:
+        """Flatten a column-oriented zigzag matrix into a single string.
+
+        Args:
+            zigzag (list[list[str]]): List of columns where each column is a
+                list of strings (one per row). Empty strings represent empty
+                cells.
+            numrows (int): Number of rows in the ZigZag pattern.
+
+        Returns:
+            str: The flattened string produced by reading the ZigZag row by
+                row from top to bottom and left to right.
+        """
         res = ""
         for i in range(numrows):
             for chars in zigzag:
@@ -68,6 +94,8 @@ class Solution:
         return res
 
 
+# I can tell this is not the most efficient solution, but the problem is silly
+# so I won't try to optimize it (it's already O(n) time complexity anyway)
 if __name__ == "__main__":
     test_input = "PAYPALISHIRING"
     solution = Solution()
