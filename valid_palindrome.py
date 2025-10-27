@@ -1,5 +1,19 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
+        """Check whether `s` is a palindrome ignoring non-alphanumerics and case.
+
+        This method advances two pointers from the start and end of the string,
+        skips characters that are not ASCII letters or digits, normalizes
+        uppercase ASCII letters to lowercase via ordinal arithmetic, and
+        compares characters pairwise.
+
+        Args:
+            s (str): The input string to test.
+
+        Returns:
+            bool: True if the normalized string is a palindrome, False
+                otherwise.
+        """
         beginning = 0
         end = len(s) - 1
         is_palindrome = True
