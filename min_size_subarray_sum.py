@@ -1,19 +1,35 @@
-import math 
+import math
 
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
-        return self.binary_search_window_size(target, nums)
+        beginning = 0
+        end = 0
+        array_len = len(nums)
+        min_window = math.inf
+        subarray_sum = 0
+
+        while end < array_len:
+            subarray_sum += nums[end]
+            while subarray_sum >= target:
+                min_window = min(min_window, end - beginning + 1)
+                subarray_sum -= nums[beginning]
+                beginning += 1
+
+            end += 1
+
+        if min_window == math.inf:
+            return 0
+        else:
+            return min_window
 
     def binary_search_window_size(self, target: int, nums: list[int]):
         array_len = len(nums)
         min_window = math.inf
         window_low = 1
-
-        # add one because (a + (a+1)) // 2 never results in a+1
-        window_up = array_len + 1
-
-        while True:
+        window_up = array_len + 1  # add one because (a + (a+1)) // 2
+        # never results in a+1
+        while True:  # figure out break condition later
             window_size = (window_up + window_low) // 2
             beginning = 0
             end = 0
@@ -39,7 +55,7 @@ class Solution:
                     break
                 else:
                     window_up = window_size
-            
+
             if target_met == False:
                 if window_size == window_low:
                     break
