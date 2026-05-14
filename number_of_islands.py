@@ -12,15 +12,17 @@ class Solution:
         bfs_queue = collections.deque()
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == "1":
-                    if seen[i][j] == False:
+                if grid[i][j] == "1" and seen[i][j] == False:
                         no_islands += 1
                         bfs_queue.append((i, j))
                         while len(bfs_queue) > 0:
                             queue_size = len(bfs_queue)
                             for _ in range(queue_size):
                                 indices = bfs_queue.popleft()
-                                if grid[indices[0]][indices[1]] == "1":
+                                if (
+                                    grid[indices[0]][indices[1]] == "1"
+                                    and seen[indices[0]][indices[1]] == False
+                                ):
                                     seen[indices[0]][indices[1]] = True
                                     if (
                                         indices[1] + 1 < n
